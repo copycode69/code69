@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply Now</title>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', Plus Jakarta Sans;
+            background: linear-gradient(135deg, #e5e7eb, #1e40af);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 2rem auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #000000;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        label::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: #1e40af;
+            transition: width 0.3s ease;
+        }
+
+        input:focus + label::after,
+        textarea:focus + label::after {
+            width: 100%;
+        }
+
+        input, textarea {
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        button {
+            padding: 0.75rem;
+            background-color: #1e40af;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #3749d4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Apply Now</h1>
+        <form id="application-form">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="resume">Upload Resume</label>
+            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+
+            <label for="cover-letter">Cover Letter</label>
+            <textarea id="cover-letter" name="cover-letter" rows="5" required></textarea>
+
+            <label for="github">GitHub Profile Link</label>
+            <input type="url" id="github" name="github" required>
+
+            <label for="linkedin">LinkedIn Profile Link</label>
+            <input type="url" id="linkedin" name="linkedin" required>
+
+            <!-- Modern Experience Section -->
+            <h2>Experience</h2>
+
+            <label for="company-name">Company Name</label>
+            <input type="text" id="company-name" name="company-name" required>
+
+            <label for="job-title">Job Title</label>
+            <input type="text" id="job-title" name="job-title" required>
+
+            <label for="job-start-date">Start Date</label>
+            <input type="date" id="job-start-date" name="job-start-date" required>
+
+            <label for="job-end-date">End Date</label>
+            <input type="date" id="job-end-date" name="job-end-date">
+
+            <label for="responsibilities">Responsibilities</label>
+            <textarea id="responsibilities" name="responsibilities" rows="5" required></textarea>
+
+            <label for="achievements">Achievements</label>
+            <textarea id="achievements" name="achievements" rows="5" required></textarea>
+
+            <!-- Additional Detail Section -->
+            <h2>Additional Details</h2>
+
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address" required>
+
+            <label for="education">Education</label>
+            <textarea id="education" name="education" rows="3" required></textarea>
+
+            <label for="certifications">Certifications</label>
+            <textarea id="certifications" name="certifications" rows="3"></textarea>
+
+            <label for="portfolio">Portfolio Link</label>
+            <input type="url" id="portfolio" name="portfolio">
+
+            <!-- Company Details Section -->
+            <h2>Company Details</h2>
+
+            <label for="position">Position</label>
+            <input type="text" id="position" name="position" required>
+
+            <label for="start-date">Start Date</label>
+            <input type="date" id="start-date" name="start-date" required>
+
+            <label for="end-date">End Date</label>
+            <input type="date" id="end-date" name="end-date">
+
+            <button type="submit">Submit Application</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('application-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Create a confirmation message
+            const confirmationMessage = document.createElement('p');
+            confirmationMessage.textContent = 'Thank you for your application! We will review your submission and get back to you soon.';
+            confirmationMessage.style.color = '#1e40af';
+            confirmationMessage.style.textAlign = 'center';
+            confirmationMessage.style.fontSize = '1.2rem';
+            
+            // Clear the form and show the message
+            const formContainer = document.querySelector('.container');
+            formContainer.innerHTML = '';
+            formContainer.appendChild(confirmationMessage);
+        });
+    </script>
+</body>
+</html>

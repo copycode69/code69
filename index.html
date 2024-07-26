@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers</title>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', Plus Jakarta Sans;
+            background: linear-gradient(135deg, #e5e7eb, #1e40af);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #000000;
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .container {
+            width: 85%;
+            margin: 2rem auto;
+        }
+
+        .section {
+            background-color: white;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: #000000;
+            font-size: 2rem;
+            margin-top: 0;
+            cursor: pointer;
+        }
+
+        .section p, .job-listing {
+            display: none;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .job-listing li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #ccc;
+            font-size: 1.1rem;
+            color: #444;
+            cursor: pointer;
+        }
+
+        .job-description {
+            display: none;
+            padding: 0.5rem 0;
+            color: #666;
+        }
+
+        .apply-button {
+            display: block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #1e40af;
+            color: white;
+            text-align: center;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        footer {
+            background-color: #000000;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .benefits-container {
+            text-align: center;
+            padding: 50px;
+        }
+
+        .benefits-title {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        .benefits-subtitle {
+            font-size: 30px;
+            margin-bottom: 50px;
+        }
+
+        .benefits {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .benefit {
+            width: 150px;
+            text-align: center;
+        }
+
+        .benefit img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+        }
+
+        .benefit p {
+            font-size: 18px;
+        }
+
+        .faq-section {
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 1rem 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.5s ease, opacity 0.5s ease;
+        }
+
+        .faq-answer.open {
+            max-height: 200px; /* Adjust based on your content */
+            opacity: 1;
+        }
+
+        /* New Section Styling */
+        .new-section {
+            text-align: center;
+            padding: 50px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+        .new-section h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .new-section p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .cards {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .card {
+            background-color: #000000;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 45%;
+            margin: 10px;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .card img {
+            width: 100%;
+            border-radius: 8px 8px 0 0;
+        }
+        .card h2 {
+            font-size: 18px;
+            color: #0078d4;
+            margin: 20px 0 10px;
+        }
+        .card p {
+            font-size: 14px;
+            color: #ffffff;
+        }
+        @media (max-width: 768px) {
+            .card {
+                width: 100%;
+            }
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <header>
+        <h1>#WeAreBlurrock</h1>
+    </header>
+    <div class="conatainer">
+        <div class="section">
+            <h2 onclick="toggleSection(0)">Our Mission</h2>
+            <p>To make work life simpler, more pleasant, and more productive.</p>
+        </div>
+        <div class="section">
+            <h2 onclick="toggleSection(1)">Our Values</h2>
+            <p>Empathy, courtesy, and playfulness.</p>
+        </div>
+        <div class="section">
+            <h2 onclick="toggleSection(2)">Job Openings</h2>
+            <ul class="job-listing">
+                <li onclick="toggleJobDescription(event, 0)">Software Engineer
+                    <div class="job-description">
+                        Develop and maintain software applications.
+                        <a href="#" class="apply-button" onclick="applyNow()">Apply Now</a>
+                    </div>
+                </li>
+                <li onclick="toggleJobDescription(event, 1)">Product Manager
+                    <div class="job-description">
+                        Oversee product development and manage product lifecycle.
+                        <a href="#" class="apply-button" onclick="applyNow()">Apply Now</a>
+                    </div>
+                </li>
+                <li onclick="toggleJobDescription(event, 2)">Customer Support Specialist
+                    <div class="job-description">
+                        Provide support and solutions to customer queries.
+                        <a href="#" class="apply-button" onclick="applyNow()">Apply Now</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="benefits-container">
+        <div class="benefits-title">Benefits and perks to love</div>
+        <div class="benefits-subtitle">
+            work hard—and we reward hard.<br>
+            We go beyond the usual benefits with surprising extras we think you'll love.
+        </div>
+        <div class="benefits">
+            <div class="benefit">
+                <img src="image/icon_financial_256.avif" alt="Financial">
+                <p>Financial</p>
+            </div>
+            <div class="benefit">
+                <img src="image/icon_perks_256.avif" alt="Perks">
+                <p>Perks</p>
+            </div>
+            <div class="benefit">
+                <img src="image/icon_personal-development_256.avif" alt="Personal development">
+                <p>Personal development</p>
+            </div>
+            <div class="benefit">
+                <img src="image/icon_health-wellness_256.avif" alt="Health and wellness">
+                <p>Health and wellness</p>
+            </div>
+            <div class="benefit">
+                <img src="image/icon_charitable_256.avif" alt="Charitable">
+                <p>Charitable</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <h1 class="text-3xl font-bold text-center mb-8 text-white">Frequently Asked Questions</h1>
+        
+        <div class="faq-item">
+            <button class="faq-question text-left w-full text-lg font-medium text-gray-100" onclick="toggleAnswer(this)">
+                What should I expect during the recruitment and interview process?
+            </button>
+            <div class="faq-answer text-gray-200">
+                <p>During the recruitment and interview process, you can expect several stages including application review, initial screening, technical interviews, and final interviews. Each stage is designed to assess your skills, experience, and fit for the role.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question text-left w-full text-lg font-medium text-gray-100" onclick="toggleAnswer(this)">
+                I've submitted a job application. What is the next step?
+            </button>
+            <div class="faq-answer text-gray-200">
+                <p>After submitting your job application, it will be reviewed by the hiring team. If your qualifications match the requirements, you will be contacted for further steps which may include an initial screening or interview.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question text-left w-full text-lg font-medium text-gray-100" onclick="toggleAnswer(this)">
+                How do I apply for an internship or co-op position at Blurrock?
+            </button>
+            <div class="faq-answer text-gray-200">
+                <p>To apply for an internship or co-op position at Blurrock, visit our careers page, search for available positions, and submit your application through our online portal.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question text-left w-full text-lg font-medium text-gray-100" onclick="toggleAnswer(this)">
+                How can I check the status of my application?
+            </button>
+            <div class="faq-answer text-gray-200">
+                <p>You can check the status of your application by logging into your account on our careers portal. Updates on your application status will also be sent to your registered email address.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question text-left w-full text-lg font-medium text-gray-100" onclick="toggleAnswer(this)">
+                Why should I sign up for job notifications?
+            </button>
+            <div class="faq-answer text-gray-200">
+                <p>Signing up for job notifications ensures that you stay informed about new job opportunities that match your preferences. You will receive alerts directly to your email, helping you to apply early and stay ahead in the recruitment process.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Section -->
+    <div class="new-section">
+        <h1>At all stages, a lifetime of opportunity</h1>
+        <p>No matter where you are in life, Blurrock has a career opportunity waiting for you! Are you the talent we're looking for?</p>
+        <div class="cards">
+            <div class="card">
+                <img src="image\text.jpg" alt="Image 1">
+                <h2>Emerging Talent</h2>
+                <p>Emerging Talent's goal is to help kickstart your career, from expanding your skillset to building your network and gaining valuable experience to propel your career. Our programs include roles for interns, apprentices, recent graduates, and those educated through alternative paths such as boot camps or community college.</p>
+            </div>
+            <div class="card">
+                <img src="image\text2.jpg" alt="Image 2">
+                <h2>Start your next mission</h2>
+                <p>Blurrock are motivated by our people, culture, and dedication in making the world a better place through our technology. Be you, with us..</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Blurrock Technologies, LLC. All rights reserved.</p>
+    </footer>
+    <script>
+        function toggleSection(index) {
+            const sections = document.querySelectorAll('.section p, .section ul');
+            sections[index].style.display = sections[index].style.display === 'block' ? 'none' : 'block';
+        }
+
+        function toggleJobDescription(event, index) {
+            event.stopPropagation();
+            const descriptions = document.querySelectorAll('.job-description');
+            descriptions[index].style.display = descriptions[index].style.display === 'block' ? 'none' : 'block';
+        }
+
+        function toggleAnswer(button) {
+            const answer = button.nextElementSibling;
+            if (answer.style.maxHeight) {
+                answer.style.maxHeight = null;
+                answer.classList.remove('open');
+            } else {
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+                answer.classList.add('open');
+            }
+        }
+
+        function applyNow() {
+            window.location.href = 'apply.html';
+        }
+    </script>
+</body>
+</html>
